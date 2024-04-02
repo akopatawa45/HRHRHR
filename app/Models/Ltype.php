@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Ltype extends Model
 {
@@ -13,4 +14,9 @@ class Ltype extends Model
         'name',
         'count',
     ];
+
+    public function lrequest(): HasOne
+    {
+        return $this->hasOne(Lrequest::class);
+    }
 }

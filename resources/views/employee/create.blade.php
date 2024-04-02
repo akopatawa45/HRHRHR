@@ -34,11 +34,25 @@
                             <input type="password" id="password" name="password" placeholder="..." required
                                 class="w-full rounded-md border px-3 py-2 focus:border-blue-500 focus:outline-none">
                         </div>
+                        <h2 class="mb-6 text-2xl font-semibold">Assign Role</h2>
+                        <div class="md:col-span-2">
+
+                            <label for="role" class="float-left block text-lg font-normal text-gray-400"></label>
+                            <select id="role" name="role"
+                                class="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-700 focus:outline-none">
+                                <option value="">...</option>
+                                @foreach ($roles as $role)
+                                    <option value="{{ $role->name }}">{{ $role->name }}</option>
+                                @endforeach
+                            </select>
+
+                        </div>
 
                         <button type="submit"
-                            class="focus:shadow-outline-blue rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:outline-none">
+                            class="focus:shadow-outline-blue mt-5 rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:outline-none">
                             Add
                         </button>
+
                     </form>
                 </div>
             </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class EmployeeController extends Controller
 {
@@ -23,7 +24,8 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return view('employee.create');
+        $roles = Role::all();
+        return view('employee.create', compact('roles'));
     }
 
     /**
@@ -38,6 +40,7 @@ class EmployeeController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
         ]);
+
         $user = User::create($validated);
 
         $user->employee()->create($validated);

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\LrequestController;
 use App\Http\Controllers\LtypeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
@@ -38,9 +39,11 @@ Route::middleware(['auth', 'verified', 'role:admin'])->name('admin.')->prefix('a
     Route::resource('/roles', RoleController::class);
     Route::resource('/leavetypes', LtypeController::class);
 
+
     Route::resource('/employees', EmployeeController::class);
 });
 
 Route::middleware(['auth', 'verified', 'role:employee'])->name('employee.')->prefix('employee')->group(function () {
+    Route::resource('leaverequests', LrequestController::class);
 });
 require __DIR__ . '/auth.php';
