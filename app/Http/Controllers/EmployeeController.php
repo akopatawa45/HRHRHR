@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ltype;
+use App\Models\Employee;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class LtypeController extends Controller
+class EmployeeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $ltypes = Ltype::orderBy("id", "desc")
+        $employees = Employee::orderBy("created_at", "desc")
             ->paginate(5);
-
-        return view('admin.ltypes.index', compact('ltypes'));
+        return view('employee.index', compact('employees'));
     }
 
     /**
@@ -23,7 +23,7 @@ class LtypeController extends Controller
      */
     public function create()
     {
-        return view('admin.ltypes.create');
+        return view('employee.create');
     }
 
     /**
@@ -33,16 +33,21 @@ class LtypeController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|min:3',
-            'count' => 'required|numeric',
+            'email' => 'required|email',
+            'password' => 'required|min:3',
+            'first_name' => 'required',
+            'last_name' => 'required',
         ]);
-        Ltype::create($validated);
-        return redirect()->route('admin.leavetypes.index')->with('success', 'Added to list');
+        $user = User::create($validated);
+
+        $user->employee()->create($validated);
+        return redirect()->route('admin.employees.index')->with('success', 'Added to list');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Ltype $ltype)
+    public function show(Employee $employee)
     {
         //
     }
@@ -50,7 +55,7 @@ class LtypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Ltype $ltype)
+    public function edit(Employee $employee)
     {
         //
     }
@@ -58,7 +63,7 @@ class LtypeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Ltype $ltype)
+    public function update(Request $request, Employee $employee)
     {
         //
     }
@@ -66,7 +71,7 @@ class LtypeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Ltype $ltype)
+    public function destroy(Employee $employee)
     {
         //
     }

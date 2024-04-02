@@ -39,7 +39,7 @@
                 <nav :class="{ 'block': open, 'hidden': !open }"
                     class="flex-grow px-4 pb-4 md:block md:overflow-y-auto md:pb-0">
                     <a class="focus:shadow-outline mt-2 block rounded-lg bg-gray-200 px-4 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-200 hover:text-gray-900 focus:bg-gray-200 focus:text-gray-900 focus:outline-none dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:bg-gray-600 dark:focus:text-white"
-                        href="#">Blog</a>
+                        href="{{ route('admin.employees.index') }}">Employee</a>
                     <div @click.away="open = false" class="relative" x-data="{ open: false }">
                         <button @click="open = !open"
                             class="focus:shadow-outline mt-2 flex w-full flex-row items-center rounded-lg bg-transparent px-4 py-2 text-left text-sm font-semibold hover:bg-gray-200 hover:text-gray-900 focus:bg-gray-200 focus:text-gray-900 focus:outline-none dark:bg-transparent dark:hover:bg-gray-600 dark:hover:text-white dark:focus:bg-gray-600 dark:focus:text-white md:block">

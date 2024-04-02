@@ -2,20 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ltype;
 use Illuminate\Http\Request;
 
-class LtypeController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $ltypes = Ltype::orderBy("id", "desc")
-            ->paginate(5);
-
-        return view('admin.ltypes.index', compact('ltypes'));
+        //
     }
 
     /**
@@ -23,7 +19,7 @@ class LtypeController extends Controller
      */
     public function create()
     {
-        return view('admin.ltypes.create');
+        //
     }
 
     /**
@@ -31,18 +27,13 @@ class LtypeController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|min:3',
-            'count' => 'required|numeric',
-        ]);
-        Ltype::create($validated);
-        return redirect()->route('admin.leavetypes.index')->with('success', 'Added to list');
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Ltype $ltype)
+    public function show(string $id)
     {
         //
     }
@@ -50,7 +41,7 @@ class LtypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Ltype $ltype)
+    public function edit(string $id)
     {
         //
     }
@@ -58,7 +49,7 @@ class LtypeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Ltype $ltype)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -66,7 +57,7 @@ class LtypeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Ltype $ltype)
+    public function destroy(string $id)
     {
         //
     }
