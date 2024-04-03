@@ -12,6 +12,7 @@ class Lrequest extends Model
     use HasFactory;
 
     protected $fillable = [
+        'leavetype',
         'from',
         'end',
         'details',
@@ -28,8 +29,8 @@ class Lrequest extends Model
     {
         return $this->belongsTo(Ltype::class);
     }
-    public function employee(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(Employee::class);
+        return $this->belongsTo(User::class);
     }
 }
